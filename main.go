@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 
@@ -133,6 +134,7 @@ var (
 )
 
 func main() {
+	log.SetOutput(os.Stdout)
 	plugin := sensu.NewGoCheck(&config.PluginConfig, options, checkArgs, executePlaybook, false)
 	plugin.Execute()
 }
